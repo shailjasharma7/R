@@ -11,3 +11,84 @@ Encoding: UTF-8
 
 RnwWeave: Sweave
 LaTeX: pdfLaTeX
+#Using the data that cn be gather from the Twitter ,i insert the api
+#key ,api secret ,access token and access token secret .
+install.packages("twitteR")
+library(twitteR)
+install.packages("devtools")
+library(devtools)
+install.packages("rjson")
+library(rjson)
+install.packages("bit64")
+library(bit64)
+install.packages("httr")
+library(httr)
+install.packages("NLP")
+library()
+install.packages("tm")
+library(tm)
+
+#restart r session
+library(devtools)
+install.packages("curl")
+library(curl)
+require("curl")
+
+
+library(devtools)
+require("curl")
+#install_github("twitteR" ,username="geoffjentry")
+library(twitteR)
+library(plyr)
+library(stringr)
+library(tm)
+#====================#
+ADDING KEYS AND TOKEN FROM API
+#====================#
+consumer_key <-"6gZigHPmrujxaLCA1rZPffqKQ"
+consumer_secret <-"QhiYLOfKsrFYzqAf7234UD8SPHKYnUhlfOsmHOxKNJa1Pjsn2z"
+access_token <-"1151071607302922240-d6PV02F7kP00zBTrFsjc6TbFfDQzl4"
+access_token_secret <-"ZcP4RlGV9fEobZCZxTxP0bdY6bPketVe9LBa6f0XaVFGM"
+
+setup_twitter_oauth(consumer_key,consumer_secret,access_token,access_token_secret)
+
+#========================#
+SEARCHING TEXT
+#========================#
+search.string <-"ICCWorldcup2019"
+no.of.tweets <-2000
+
+input_tweets <-searchTwitter(search.string,n=no.of.tweets,lang = "en")
+input_tweets <-[1:5]
+
+search.string <-"MSDhoni"
+no.of.tweets <-20
+
+input_tweets <-searchTwitter(search.string,n=no.of.tweets,lang = "en")
+input_tweets <-[1:5]
+
+#==================#
+CALCULATING SENTIMENT ANALYSIS USING SENTIMENT package
+#==================#
+install.packages("sentimentr")
+library(sentimentr)
+-------------------
+  
+tweet=sapply(input_tweets,function(x) x$getText())
+
+  input_tweets1 <-get_sentences(tweet1) 
+  input_tweets2 <-sentiment(tweets2)
+  
+library(sentimentr) 
+tweet1 <-as.vector(tweet)
+input_tweets1 <-get_sentences('i love Dhoni')
+View(input_tweets1)
+
+input_tweets2 <-sentiment(input_tweets1)
+View(input_tweets2)
+
+search.string <-"ICCWorldcup2019"
+no.of.tweets <-2000
+
+input_tweets <-searchTwitter(search.string,n=no.of.tweets,lang = "en")
+input_tweets <-[1:5]
